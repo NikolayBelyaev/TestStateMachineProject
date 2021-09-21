@@ -15,7 +15,7 @@ namespace Core
             _stateContext = stateContext;
         }
 
-        public void ActivateState<T> () where T : IState
+        public void ActivateState(Type type)
         {
             if (_currentState != null)
             {
@@ -23,10 +23,10 @@ namespace Core
                 _currentState = null;
             }
 
-            _currentState = Activator.CreateInstance(typeof(T)) as IState;
+            _currentState = Activator.CreateInstance(type) as IState;
             if (_currentState == null)
             {
-                throw new Exception($"Can't find state of type {typeof(T)}");
+                throw new Exception($"Can't find state of type {type.FullName}");
             }
             
             _currentState.Setup(_stateContext, _stateMachine, this);

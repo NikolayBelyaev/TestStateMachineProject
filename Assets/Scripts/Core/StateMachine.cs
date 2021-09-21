@@ -16,10 +16,10 @@ namespace Core
             return new StateMachine(context);
         }
 
-        public IStateSequence StartSequence<T>() where T : IState
+        public IStateSequence StartSequence(Type type)
         {
             var sequece = new StateSequence(this, _context);
-            sequece.ActivateState<T>();
+            sequece.ActivateState(type);
 
             return sequece;
         }

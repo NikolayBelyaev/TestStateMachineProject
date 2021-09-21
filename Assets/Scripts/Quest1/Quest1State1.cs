@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using UnityEngine;
 
 namespace Quest1
@@ -10,7 +11,8 @@ namespace Quest1
             base.OnEnter();
             
             Context.View.Image.color = Color.black;
-            Context.CoroutineService.WaitForTime(2).Then(() => Sequence.ActivateState<Quest1State2>());
+            var targetStateType = Type.GetType("Quest1.Quest1State2");
+            Context.CoroutineService.WaitForTime(2).Then(() => Sequence.ActivateState(targetStateType));
         }
     }
 }
