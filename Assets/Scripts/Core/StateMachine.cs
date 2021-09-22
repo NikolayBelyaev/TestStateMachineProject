@@ -2,7 +2,7 @@
 
 namespace Core
 {
-    public class StateMachine : IStateMachine, IDisposable
+    public class StateMachine : IStateMachine
     {
         private readonly IStateContext _context;
 
@@ -18,15 +18,10 @@ namespace Core
 
         public IStateSequence StartSequence(Type type)
         {
-            var sequece = new StateSequence(this, _context);
-            sequece.ActivateState(type);
+            var sequence = new StateSequence(this, _context);
+            sequence.ActivateState(type);
 
-            return sequece;
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
+            return sequence;
         }
     }
 }
