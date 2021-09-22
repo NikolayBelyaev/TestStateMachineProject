@@ -1,6 +1,8 @@
-﻿namespace Core
+﻿using System;
+
+namespace Core
 {
-    public abstract class StateBase<TContext> : IState where TContext : class, IStateContext
+    public abstract class StateBase<TContext> : IDisposable, IState where TContext : class, IStateContext
     {
         protected TContext Context { get; private set; }
         protected IStateMachine StateMachine { get; private set; }
@@ -20,6 +22,16 @@
 
         public virtual void OnExit()
         {
+            Dispose();
+        }
+
+        public virtual void Dispose()
+        {
+            Context = null;
+            StateMachine = null;
+            Sequence = null;
+            
+            GC.SuppressFinalize(this);
         }
     }
 }

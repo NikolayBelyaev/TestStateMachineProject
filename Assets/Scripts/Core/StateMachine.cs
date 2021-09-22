@@ -18,10 +18,10 @@ namespace Core
 
         public IStateSequence StartSequence(Type type)
         {
-            var sequece = new StateSequence(this, _context);
-            sequece.ActivateState(type);
+            var sequence = new StateSequence(this, _context);
+            sequence.ActivateState(type);
 
-            return sequece;
+            return sequence;
         }
     }
 }
