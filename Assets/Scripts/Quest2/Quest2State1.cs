@@ -10,8 +10,17 @@ namespace Quest2
             base.OnEnter();
             
             Context.View.SetColor(Color.green);
-            Context.CoroutineService.WaitForTime(2f).Then(() => QuestStepActivatorService.ActivateNext(Sequence));
+            Context.CoroutineService.WaitForTime(2f).Then(() =>
+            {
+                QuestStepActivatorService.ActivateNext(Sequence);
+            });
 
+        }
+
+        public override void OnExit()
+        {
+            Debug.Log($"Exit: {this.GetType().Name}");
+            base.OnExit();
         }
     }
 }

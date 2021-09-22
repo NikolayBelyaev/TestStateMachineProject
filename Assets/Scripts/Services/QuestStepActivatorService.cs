@@ -47,7 +47,15 @@ public class QuestStepActivatorService : MonoBehaviour
     {
         if (NextStep == null)
         {
-            Debug.Log("END OF GAME SEQUENCE");
+            try
+            {
+                sequence.ActivateState(Type.GetType("End"));
+            }
+            finally
+            {
+                Debug.Log("END OF GAME SEQUENCE");
+            }
+            
             return;
         }
 

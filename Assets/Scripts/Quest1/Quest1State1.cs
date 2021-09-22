@@ -13,5 +13,11 @@ namespace Quest1
             Context.View.SetColor(Color.black);
             Context.CoroutineService.WaitForTime(2f).Then(() => QuestStepActivatorService.ActivateNext(Sequence));
         }
+        
+        public override void OnExit()
+        {
+            Debug.Log($"Exit: {this.GetType().Name}");
+            base.OnExit();
+        }
     }
 }
