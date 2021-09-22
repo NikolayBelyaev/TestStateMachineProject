@@ -1,17 +1,17 @@
-﻿using System;
 using Core;
 using UnityEngine;
 
-namespace Quest1
+namespace Quest2
 {
-    public class Quest1State1 : StateBase<QuestContext>
+    public class Quest2State1 : StateBase<QuestContext>
     {
         public override void OnEnter()
         {
             base.OnEnter();
-
-            Context.View.SetColor(Color.black);
+            
+            Context.View.SetColor(Color.green);
             Context.CoroutineService.WaitForTime(2f).Then(() => QuestStepActivatorService.ActivateNext(Sequence));
+
         }
     }
 }

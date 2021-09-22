@@ -11,6 +11,8 @@ namespace Quest1
             base.OnEnter();
             
             Context.View.SetColor(Color.red);
+            Context.CoroutineService.WaitForTime(2f).Then(() => QuestStepActivatorService.ActivateNext(Sequence));
+
         }
     }
 }
