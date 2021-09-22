@@ -5,12 +5,15 @@ using UnityEngine;
 
 namespace Quest1
 {
-    public class Quest1Mediator : MonoBehaviour
+    public class Quest1Mediator : StateBase<QuestContext>
     {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
+        
         private void OnEnable()
         {
-            var view = FindObjectOfType<Quest1View>();
-            var coroutineService = FindObjectOfType<CoroutineService>();
             var stateMachine = StateMachine.Create(new Quest1Context(view, coroutineService));
             
             var targetStateType = Type.GetType("Quest1.Quest1State1");
